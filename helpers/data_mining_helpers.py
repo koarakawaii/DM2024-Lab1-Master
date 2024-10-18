@@ -18,21 +18,21 @@ def format_labels(target, docs):
     """ format the labels """
     return docs.target_names[target]
 
-def check_missing_values(row):
+def check_missing_values(data_series):
     """ functions that check and verifies if there are missing values in dataframe """
     counter = 0
-    for element in row:
+    for element in data_series:
         if element == True:
             counter+=1
     return ("The amoung of missing records is: ", counter)
 
-def tokenize_text(text, remove_stopwords=False):
+def tokenize_text(text, remove_stopwords=False): # stopwords are words that are so widely used that they carry very little useful information; see https://sfhsu29.medium.com/nlp-%E5%85%A5%E9%96%80-1-2-stop-words-da3d311d29bc
     """
     Tokenize text using the nltk library
     """
     tokens = []
-    for d in nltk.sent_tokenize(text, language='english'):
-        for word in nltk.word_tokenize(d, language='english'):
+    for d in nltk.sent_tokenize(text, language='english'):     # see https://www.nltk.org/api/nltk.tokenize.sent_tokenize.html
+        for word in nltk.word_tokenize(d, language='english'): # see https://www.nltk.org/api/nltk.tokenize.word_tokenize.html
             # filters here
             tokens.append(word)
     return tokens
